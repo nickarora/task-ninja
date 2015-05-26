@@ -7,7 +7,7 @@ var app = angular
     'ngRoute',    
     'firebase'
   ])
-  .constant('FURL', 'https://your-firebase.firebaseio.com/')  
+  .constant('FURL', 'https://task-ninja-x.firebaseio.com/')  
   .config(function ($routeProvider) {
     $routeProvider      
       .when('/', {
@@ -21,7 +21,8 @@ var app = angular
         templateUrl: 'views/edit.html'
       })
       .when('/browse', {
-        templateUrl: 'views/browse.html'
+        templateUrl: 'views/browse.html',
+        controller: 'TaskController'
       })
       .otherwise({
         redirectTo: '/'
