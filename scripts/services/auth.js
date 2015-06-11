@@ -24,7 +24,7 @@ app.factory('Auth', function(FURL, $firebaseAuth, $firebase){
 		logout: function() {
 			auth.$unauth();
 		},
-		
+
 		changePassword: function(user){
 			return auth.$changePassword({
 				email: user.email,
@@ -37,6 +37,14 @@ app.factory('Auth', function(FURL, $firebaseAuth, $firebase){
 			return !!Auth.user.provider;
 		}
 	};
+
+	auth.$onAuth(function(authData){
+		if (authData) {
+			angular.copy(authData, Auth.user);
+		} else {
+			angular.copy({}, Auth.user);
+		}
+	});
 
 	return Auth;
 });
